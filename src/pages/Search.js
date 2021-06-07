@@ -17,7 +17,7 @@ const Search = ({ hideButtons = false }) => {
     <form className="search">
       <div className="search__input">
         <SearchRoundedIcon />
-        <input disabled={true} placeholder="No need to type. Just set your intent and Find!" />
+        <input disabled={true} placeholder="Nothing to type. Think your intent and Find!" />
       </div>
       {!hideButtons ? (
         <div className="search__button">
