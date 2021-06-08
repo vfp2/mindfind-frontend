@@ -15,7 +15,7 @@ const Home = () => {
         </div>
       </div>
       <div className="home__body">
-        <img src="logo192.png" />
+        <img alt="Mindfind logo" src="logo192.png" />
         <div className="home__inputContainer">
           <Search />
         </div>
