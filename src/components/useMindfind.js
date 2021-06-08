@@ -5,7 +5,7 @@ const useMindfind = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      fetch('https://api.mindfind.net/api/geturls')
+      fetch('/api/geturls')
         .then((response) => response.json())
         .then((result) => {
           setData(result);
