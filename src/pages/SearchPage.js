@@ -1,5 +1,6 @@
 import React from "react";
 import useGoogleSearch from "../components/useGoogleSearch";
+import useMindfind from "../components/useMindfind";
 import Response from "../components/response";
 import { Link } from "react-router-dom";
 import "./SearchPage.css";
@@ -12,11 +13,11 @@ import ImageIcon from "@material-ui/icons/Image";
 
 const SearchPage = () => {
   // const { data } = useGoogleSearch("mind matter interaction");
-  // const { data } = useMindfind();
+  const { data } = useMindfind();
   //Mock API Call
-  const data = Response;
+  // const data = Response;
 
-  console.log(data);
+  // console.log(data);
   return (
     <div className="searchPage">
       <div className="searchPage__header">
@@ -58,7 +59,7 @@ const SearchPage = () => {
       {(
         <div className="searchPage__results">
           <p className="searchPage__resultCount">
-            About {data?.searchInformation.formattedTotalResults} results (
+            {data?.searchInformation.formattedTotalResults} hits from {data?.searchInformation.formattedTotalSizeScanned} (
             {data?.searchInformation.formattedSearchTime} seconds) for your intent
           </p>
 
@@ -72,7 +73,7 @@ const SearchPage = () => {
                       src={item.pagemap?.cse_image[0]?.src}
                     />
                   )}
-                {item.displayLink} 🔻
+                {item.displayLink} ▽
               </a>
               <a className="searchPage__resultTitle" href={item.link}>
                 <h2>{item.title}</h2>
