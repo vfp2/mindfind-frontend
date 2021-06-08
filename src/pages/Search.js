@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Search.css";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import Button from "@material-ui/core/Button";
