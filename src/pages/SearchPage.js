@@ -1,7 +1,6 @@
 import React from "react";
-import useGoogleSearch from "../components/useGoogleSearch";
 import useMindfind from "../components/useMindfind";
-import Response from "../components/response";
+// import Response from "../components/response";
 import { Link } from "react-router-dom";
 import "./SearchPage.css";
 import Search from "./Search";
@@ -12,10 +11,36 @@ import {
 import ImageIcon from "@material-ui/icons/Image";
 
 const SearchPage = () => {
-  // const { data } = useGoogleSearch("mind matter interaction");
-  const { data } = useMindfind();
+  const { 
+    intentData,
+    linkData1,
+    linkData2,
+    linkData3,
+    linkData4,
+    linkData5,
+    linkData6,
+    linkData7,
+    linkData8,
+    linkData9,
+    linkData10
+   } = useMindfind();
   //Mock API Call
   // const data = Response;
+
+  var linkDatas = [
+    linkData1,
+    linkData2,
+    linkData3,
+    linkData4,
+    linkData5,
+    linkData6,
+    linkData7,
+    linkData8,
+    linkData9,
+    linkData10
+  ];
+
+  var i = 0;
 
   // console.log(data);
   return (
@@ -25,6 +50,7 @@ const SearchPage = () => {
           <img
             className="searchPage__logo"
             src="/logo192.png"
+            alt="Mindfind logo"
           />
         </Link>
 
@@ -59,26 +85,31 @@ const SearchPage = () => {
       {(
         <div className="searchPage__results">
           <p className="searchPage__resultCount">
-            {data?.searchInformation.formattedTotalResults} hits from {data?.searchInformation.formattedTotalSizeScanned} (
-            {data?.searchInformation.formattedSearchTime} seconds) for your intent
+            {/* {linkData ? `${linkData.searchInformation.formattedTotalResults} hits from ${linkData.searchInformation.formattedTotalSizeScanned} (${linkData.searchInformation.formattedSearchTime} seconds) for your intent` : "Loading・・・"} */}
           </p>
 
-          {data?.items.map((item) => (
+          {intentData?.results.map((intent) => (
             <div className="searchPage__result">
-              <a href={item.link}>
-                {item.pagemap?.cse_image?.length > 0 &&
-                  item.pagemap?.cse_image[0]?.src && (
+              <a href={linkDatas?.[i]?.items[0].link} target="_blank">
+                {linkDatas?.[i]?.items[0].pagemap?.cse_image?.length > 0 &&
+                  linkDatas?.[i]?.items[0].pagemap?.cse_image[0]?.src && (
                     <img
                       className="searchPage__resultImage"
-                      src={item.pagemap?.cse_image[0]?.src}
+                      src={linkDatas?.[i]?.items[0].pagemap?.cse_image[0]?.src}
+                      alt=""
                     />
                   )}
-                {item.displayLink} ▽
+                {linkDatas?.[i]?.items[0].displayLink}
+              </a> ▽
+              <a className="searchPage__resultTitle" href={linkDatas?.[i]?.items[0].link} target="_blank">
+                <h2>{linkDatas?.[i]?.items[0].title}</h2>
               </a>
-              <a className="searchPage__resultTitle" href={item.link}>
-                <h2>{item.title}</h2>
-              </a>
-              <p className="searchPage__resultSnippet">{item.snippet}</p>
+              <p className="searchPage__resultSnippet">
+                {linkDatas?.[i]?.items[0].snippet}
+              </p>
+              <p className="searchPage__resultCount">
+                No. {(i++) + 1} | Intent score: {intent.intentScore?.toFixed(4)} | Z-score: {intent.zScore?.toFixed(4)}
+              </p>
             </div>
           ))}
         </div>
