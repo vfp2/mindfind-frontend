@@ -106,7 +106,7 @@ const SearchPage = () => {
 
           {intentData?.results.map((intent) => (
             <div className="searchPage__result">
-              <a href={linkDatas?.[i]?.items[0].displayLink} target="_blank">
+              <a href={'https://' + linkDatas?.[i]?.items[0].displayLink} target="_blank">
                 {linkDatas?.[i]?.items[0].pagemap?.cse_image?.length > 0 &&
                   linkDatas?.[i]?.items[0].pagemap?.cse_image[0]?.src && (
                     <img
