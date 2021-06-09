@@ -17,7 +17,7 @@ const useMindfind = () => {
   useEffect(() => {
     const fetchData = async () => {
 
-      fetch('/api/get/intent')
+      fetch('/proxy/api/get/intent')
         .then((response) => response.json())
         .then(async (intentResult) => {
           setIntentData(intentResult);
@@ -26,7 +26,7 @@ const useMindfind = () => {
           for (var i = 0; i < intents.length; i++) {
             (async () => {
               const j = i;
-              var urlResponse = await axios.get(`/api/get/url?intentScore=${intents[j].intentScore}`);
+              var urlResponse = await axios.get(`/proxy/api/get/url?intentScore=${intents[j].intentScore}`);
               if (j === 0) setLinkData1(urlResponse.data);
               if (j === 1) setLinkData2(urlResponse.data);
               if (j === 2) setLinkData3(urlResponse.data);
