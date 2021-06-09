@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
 import Search from "./Search";
 
 const Home = () => {
@@ -8,10 +7,10 @@ const Home = () => {
     <div className="home">
       <div className="home__header">
         <div className="home__headerLeft">
-          <Link to="https://forum.fp2.dev">MMI Forum</Link>
+          <a href="https://forum.fp2.dev">MMI Forum</a>
         </div>
         <div className="home__headerRight">
-          <Link to="https://www.github.com/vfp2">Code</Link>
+          <a href="https://www.github.com/vfp2">Code</a>
         </div>
       </div>
       <div className="home__body">
