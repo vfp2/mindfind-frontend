@@ -10,6 +10,9 @@ import {
 } from "@material-ui/icons";
 import ImageIcon from "@material-ui/icons/Image";
 
+const moment = require('moment');
+const prettyBytes = require('pretty-bytes');
+
 const SearchPage = () => {
   const { 
     intentData,
@@ -85,7 +88,20 @@ const SearchPage = () => {
       {(
         <div className="searchPage__results">
           <p className="searchPage__resultCount">
-            {/* {linkData ? `${linkData.searchInformation.formattedTotalResults} hits from ${linkData.searchInformation.formattedTotalSizeScanned} (${linkData.searchInformation.formattedSearchTime} seconds) for your intent` : "Loading・・・"} */}
+            {linkDatas.reduce((a, b) => {
+              let bv = b?.searchInformation?.totalResults;
+              if (!bv) bv = 0;
+              return a + bv;
+             }, 0)} hits from {prettyBytes(linkDatas.reduce((a, b) => {
+              let bv = b?.searchInformation?.totalBytesScanned;
+              if (!bv) bv = 0;
+              return a + bv;
+             }, 0))} (
+            {moment.utc(linkDatas.reduce((a, b) => {
+              let bv = b?.searchInformation?.totalMillisTaken;
+              if (!bv) bv = 0;
+              return a + bv;
+             }, 0)).format('mm:ss:SSS')} time taken) for your intent
           </p>
 
           {intentData?.results.map((intent) => (
