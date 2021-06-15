@@ -24,7 +24,7 @@ const Search = ({ hideButtons = false }) => {
           <Button type="submit" onClick={search} varient="outlined">
             Mind Find
           </Button>
-          <Button varient="outlined">I'm Feeling Random</Button>
+          <a href="https://mindfind.net/proxy/api/get/searchterms" varient="outlined">I'm Feeling Random</a>
         </div>
       ) : (
         <div className="search__button">
