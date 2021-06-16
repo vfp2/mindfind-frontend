@@ -12,6 +12,10 @@ function App() {
           <Route path="/search">
             <SearchPage />
           </Route>
+          <Route path='/feelingrandom' component={() => { 
+            window.location.href = 'https://mindfind.net/proxy/api/get/searchterms'; 
+            return null;
+          }}/>
           <Route path="/">
             <Home />
           </Route>

@@ -13,6 +13,12 @@ const Search = ({ hideButtons = false }) => {
     history.push("/search");
   };
 
+  const feelingRandom = (e) => {
+    e.preventDefault();
+
+    history.push("/feelingrandom");
+  };
+
   return (
     <form className="search">
       <div className="search__input">
@@ -24,7 +30,9 @@ const Search = ({ hideButtons = false }) => {
           <Button type="submit" onClick={search} varient="outlined">
             Mind Find
           </Button>
-          <a href="https://mindfind.net/proxy/api/get/searchterms" varient="outlined">I'm Feeling Random</a>
+          <Button type="submit" onClick={feelingRandom} varient="outlined">
+            I'm Feeling Random
+          </Button>
         </div>
       ) : (
         <div className="search__button">
