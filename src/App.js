@@ -13,7 +13,7 @@ function App() {
             <SearchPage />
           </Route>
           <Route path='/trulylucky' component={() => { 
-            window.location.href = 'http://localhost:3944/api/get/searchterms'; 
+            window.location.href = 'https://mindfind.net/proxy/api/get/searchterms'; 
             return null;
           }}/>
           <Route path='/pseudolucky' component={() => { 
