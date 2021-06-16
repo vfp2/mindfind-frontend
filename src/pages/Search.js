@@ -13,25 +13,34 @@ const Search = ({ hideButtons = false }) => {
     history.push("/search");
   };
 
-  const feelingRandom = (e) => {
+  const trulyLucky = (e) => {
     e.preventDefault();
 
-    history.push("/feelingrandom");
+    history.push("/trulylucky");
+  };
+
+  const pseudoLucky = (e) => {
+    e.preventDefault();
+
+    history.push("/pseudolucky");
   };
 
   return (
     <form className="search">
       <div className="search__input">
         <SearchRoundedIcon />
-        <input disabled={true} placeholder="Nothing to type. Think your intent and Find!" />
+        <input disabled={true} placeholder="Type nothing. Think your intent and Find!" />
       </div>
       {!hideButtons ? (
         <div className="search__button">
           <Button type="submit" onClick={search} varient="outlined">
-            Mind Find
+            Find with Mind
           </Button>
-          <Button type="submit" onClick={feelingRandom} varient="outlined">
-            I'm Feeling Random
+          <Button type="submit" onClick={trulyLucky} varient="outlined">
+            I'm Feeling Truly Lucky
+          </Button>
+          <Button type="submit" onClick={pseudoLucky} varient="outlined">
+            I'm Feeling Pseudo Lucky
           </Button>
         </div>
       ) : (
@@ -40,12 +49,14 @@ const Search = ({ hideButtons = false }) => {
             className="search__buttonsHidden"
             type="submit"
             onClick={search}
-            varient="outlined"
-          >
+            varient="outlined">
             Mind Find
           </Button>
           <Button className="search__buttonsHidden" varient="outlined">
-            I'm Feeling Random
+            I'm Feeling Truly Lucky
+          </Button>
+          <Button className="search__buttonsHidden" varient="outlined">
+            I'm Feeling Pseudo Lucky
           </Button>
         </div>
       )}
