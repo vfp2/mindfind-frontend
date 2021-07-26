@@ -29,18 +29,18 @@ const Search = ({ hideButtons = false }) => {
     <form className="search">
       <div className="search__input">
         <SearchRoundedIcon />
-        <input disabled={true} placeholder="Type nothing. Think your intent and Find!" />
+        <input disabled={true} placeholder="Type nothing. Find by thinking!" />
       </div>
       {!hideButtons ? (
         <div className="search__button">
           <Button type="submit" onClick={search} varient="outlined">
-            Find with Mind
+            Mindfind
           </Button>
           <Button type="submit" onClick={trulyLucky} varient="outlined">
-            I'm Feeling Truly Lucky
+            Truly Lucky
           </Button>
           <Button type="submit" onClick={pseudoLucky} varient="outlined">
-            I'm Feeling Pseudo Lucky
+            Pseudo Lucky
           </Button>
         </div>
       ) : (
@@ -50,16 +50,22 @@ const Search = ({ hideButtons = false }) => {
             type="submit"
             onClick={search}
             varient="outlined">
-            Mind Find
+            Mindfind
           </Button>
           <Button className="search__buttonsHidden" varient="outlined">
-            I'm Feeling Truly Lucky
+            Truly Lucky
           </Button>
           <Button className="search__buttonsHidden" varient="outlined">
-            I'm Feeling Pseudo Lucky
+            Pseudo Lucky
           </Button>
         </div>
       )}
+      <br/>
+      <center>
+        <i>Mindfind</i> - set your intent to search the whole web<br/>
+        <i>Truly Lucky</i> - for those feeling like true random search terms<br/>
+        <i>Pseudo Lucky</i> - search terms generated pseudorandomly<br/>
+      </center>
     </form>
   );
 };
