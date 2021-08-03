@@ -64,7 +64,7 @@ const SearchPage = () => {
             <div className="searchPage__optionsLeft">
               <div className="searchPage__option">
                 <SearchRounded />
-                <Link to="/all">All</Link>
+                <Link to="/all">Web Search</Link>
               </div>
               <div className="searchPage__option">
                 <ImageIcon />
@@ -101,7 +101,7 @@ const SearchPage = () => {
               let bv = b?.searchInformation?.totalMillisTaken;
               if (!bv) bv = 0;
               return a + bv;
-             }, 0)).format('mm:ss:SSS')} time taken) for your intent
+             }, 0)).format('HH:mm:ss:SSS')} time taken) for your intent
           </p>
 
           {intentData?.results.map((intent) => (
@@ -124,7 +124,7 @@ const SearchPage = () => {
                 {linkDatas?.[i]?.items[0].snippet}
               </p>
               <p className="searchPage__resultCount">
-                No. {(i++) + 1} | Intent score: {intent.intentScore?.toFixed(4)} | Z-score: {intent.zScore?.toFixed(4)}
+                No. {(i++) + 1} | z-score: {intent.zScore?.toFixed(4)}
               </p>
             </div>
           ))}

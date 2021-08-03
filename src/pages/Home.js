@@ -7,10 +7,10 @@ const Home = () => {
     <div className="home">
       <div className="home__header">
         <div className="home__headerLeft">
-          <a href="https://forum.fp2.dev">MMI Forum</a>
+          <a href="https://forum.fp2.dev">fp2.dev MMI Forum</a>
         </div>
         <div className="home__headerRight">
-          <a href="https://www.github.com/vfp2">Code</a>
+          <a href="https://www.github.com/vfp2">Source Code</a>
         </div>
       </div>
       <div className="home__body">

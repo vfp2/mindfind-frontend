@@ -7,40 +7,49 @@ import { useHistory } from "react-router-dom";
 const Search = ({ hideButtons = false }) => {
   const history = useHistory();
 
-  const search = (e) => {
+  const webSearch = (e) => {
     e.preventDefault();
 
-    history.push("/search");
+    history.push("/websearch");
   };
 
-  const trulyLucky = (e) => {
+  const trueTerms = (e) => {
     e.preventDefault();
 
-    history.push("/trulylucky");
+    history.push("/trueterms");
   };
 
-  const pseudoLucky = (e) => {
+  const intentSuggestions = (e) => {
     e.preventDefault();
 
-    history.push("/pseudolucky");
+    history.push("/intentsuggestions");
+  };
+
+  const pseudoTerms = (e) => {
+    e.preventDefault();
+
+    history.push("/pseudoterms");
   };
 
   return (
     <form className="search">
       <div className="search__input">
         <SearchRoundedIcon />
-        <input disabled={true} placeholder="Type nothing. Find by thinking!" />
+        <input disabled={true} placeholder="Think your intent and choose your find. No need to type." />
       </div>
       {!hideButtons ? (
         <div className="search__button">
-          <Button type="submit" onClick={search} varient="outlined">
-            Mindfind
+          <Button type="submit" onClick={webSearch} varient="outlined">
+            Web Search
           </Button>
-          <Button type="submit" onClick={trulyLucky} varient="outlined">
-            Truly Lucky
+          <Button type="submit" onClick={trueTerms} varient="outlined">
+            True Terms
           </Button>
-          <Button type="submit" onClick={pseudoLucky} varient="outlined">
-            Pseudo Lucky
+          <Button type="submit" onClick={intentSuggestions} varient="outlined">
+            Intent Suggestions
+          </Button>
+          <Button type="submit" onClick={pseudoTerms} varient="outlined">
+            Pseudo Terms
           </Button>
         </div>
       ) : (
@@ -48,24 +57,21 @@ const Search = ({ hideButtons = false }) => {
           <Button
             className="search__buttonsHidden"
             type="submit"
-            onClick={search}
+            onClick={webSearch}
             varient="outlined">
-            Mindfind
+            Web Search
           </Button>
           <Button className="search__buttonsHidden" varient="outlined">
-            Truly Lucky
+            True Terms
           </Button>
           <Button className="search__buttonsHidden" varient="outlined">
-            Pseudo Lucky
+            Intent Suggestions
+          </Button>
+          <Button className="search__buttonsHidden" varient="outlined">
+            Pseudo Terms
           </Button>
         </div>
       )}
-      <br/>
-      <center>
-        <i>Mindfind</i> - set your intent to search the whole web<br/>
-        <i>Truly Lucky</i> - for those feeling like true random search terms<br/>
-        <i>Pseudo Lucky</i> - search terms generated pseudorandomly<br/>
-      </center>
     </form>
   );
 };
