@@ -24,8 +24,7 @@ const useMindfind = () => {
           setIntentData(intentResult);
 
           var intents = intentResult.results;
-          for (var i = 0; i < 1/*FIXME: support > 1 in backend; intents.length*/; i++) {
-            (async () => {
+          for (var i = 0; i < intents.length; i++) {
               const j = i;
               // var urlResponse = await axios.get(`/api/get/url?intentScore=${intents[j].intentScore}`);
               var urlResponse = await axios.get(`/proxy/api/get/url?intentScore=${intents[j].intentScore}`);
@@ -39,7 +38,6 @@ const useMindfind = () => {
               if (j === 7) setLinkData8(urlResponse.data);
               if (j === 8) setLinkData9(urlResponse.data);
               if (j === 9) setLinkData10(urlResponse.data);
-            })();
           }
         });
     };
