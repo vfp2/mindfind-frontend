@@ -66,20 +66,20 @@ const SearchPage = () => {
                 <SearchRounded />
                 <Link to="/all">Web Search</Link>
               </div>
-              <div className="searchPage__option">
+              {/* <div className="searchPage__option">
                 <ImageIcon />
                 <Link to="/images">Images</Link>
               </div>
               <div className="searchPage__option">
                 <VideocamRounded />
                 <Link to="/videos">Videos</Link>
-              </div>
+              </div> */}
             </div>
 
             <div className="searchPage__optionsRight">
-              <div className="searchPage__option">
+              {/* <div className="searchPage__option">
                 <Link to="/settings">Settings</Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -88,20 +88,25 @@ const SearchPage = () => {
       {(
         <div className="searchPage__results">
           <p className="searchPage__resultCount">
-            {linkDatas.reduce((a, b) => {
+            { linkDatas.reduce((a, b) => {
               let bv = b?.searchInformation?.totalResults;
               if (!bv) bv = 0;
               return a + bv;
-             }, 0)} hits from {prettyBytes(linkDatas.reduce((a, b) => {
-              let bv = b?.searchInformation?.totalBytesScanned;
-              if (!bv) bv = 0;
-              return a + bv;
-             }, 0))} (
-            {moment.utc(linkDatas.reduce((a, b) => {
-              let bv = b?.searchInformation?.totalMillisTaken;
-              if (!bv) bv = 0;
-              return a + bv;
-             }, 0)).format('HH:mm:ss:SSS')} time taken) for your intent
+             }, 0) == 0 ? "Loading... please wait..." :
+              linkDatas.reduce((a, b) => {
+                let bv = b?.searchInformation?.totalResults;
+                if (!bv) bv = 0;
+                return a + bv;
+              }, 0)} hits from {prettyBytes(linkDatas.reduce((a, b) => {
+                let bv = b?.searchInformation?.totalBytesScanned;
+                if (!bv) bv = 0;
+                return a + bv;
+              }, 0))} (
+              {moment.utc(linkDatas.reduce((a, b) => {
+                let bv = b?.searchInformation?.totalMillisTaken;
+                if (!bv) bv = 0;
+                return a + bv;
+              }, 0)).format('HH:mm:ss:SSS')} time taken) for your intent
           </p>
 
           {intentData?.results.map((intent) => (
